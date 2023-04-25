@@ -1,9 +1,13 @@
-//
-//  main.c
-//  Left Factoring
-//
-//  Created by Anshu Aaron Varma on 09/02/23.
-//
+/* input
+/tmp/arScVgUDKb.o
+Enter the no. of nonterminals : 1
+Nonterminal 1 
+Enter the no. of productions : 3
+Enter LHS : b
+b->aA
+b->aC
+b->aD
+/*/
 
 #include<string.h>
 #include<stdio.h>
