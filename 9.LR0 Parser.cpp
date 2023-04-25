@@ -1,9 +1,11 @@
-//
-//  main.cpp
-//  LR0 Parser
-//
-//  Created by Anshu Aaron Varma on 19/04/23.
-//
+/* input 
+E->E+T
+E->T
+T->T*F
+T->F
+F->(E)
+F->i
+0*/
 
 #include<iostream>
 //#include<conio.h>
