@@ -1,9 +1,5 @@
 //
-//  main.cpp
-//  Intermediate code three address code
-//
-//  Created by Anshu Aaron Varma on 03/04/23.
-//
+//input:a=b*c-d
 
 #include<stdio.h>
 #include<ctype.h>
