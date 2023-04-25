@@ -2,7 +2,7 @@
 //  main.cpp
 //  Postfix to prefix
 //
-//  Created by Anshu Aaron Varma on 19/04/23.
+//input:AB*C+
 //
 
 #include<stdio.h>
