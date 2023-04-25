@@ -2,7 +2,7 @@
 //  main.cpp
 //  Simple Code Generator
 //
-//  Created by Anshu Aaron Varma on 11/04/23.
+// 
 //
 
 #include <stdio.h>
