@@ -1,3 +1,12 @@
+/*
+enter the no. of nonterminals
+2
+enter the productions in a grammar
+S->CC
+C->eC/d*/
+
+
+
 #include<stdio.h>
 
 #include<string.h>
