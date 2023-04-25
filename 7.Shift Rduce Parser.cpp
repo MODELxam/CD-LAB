@@ -1,84 +1,92 @@
-//
-//  main.cpp
-//  Shift Rduce Parser
-//
-//  Created by Anshu Aaron Varma on 19/04/23.
-//
-
-#include <iostream>
-#include <string>
-#include <stack>
-#include <map>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-// Define the grammar rules as a set of productions
-const string productions[] = {
-    "E->E+T",
-    "E->T",
-    "T->T*F",
-    "T->F",
-    "F->(E)",
-    "F->i"
-};
 
-// Define the precedence table
-const map<char, int> precedence = {
-    {'+', 1},
-    {'*', 2},
-    {'(', 0},
-};
+int z = 0, i = 0, j = 0, c = 0;
 
-// Parse the input string using a stack and a table-driven approach
-bool parse(string input) {
-    stack<char> stk;
-    stk.push('$');
-    stk.push('E');
+char a[16], ac[20], stk[15], act[10];
 
-    int i = 0;
-    while (!stk.empty() && i < input.size()) {
-        char top = stk.top();
-
-        if (top == input[i]) {
-            stk.pop();
-            i++;
-        } else if (precedence.count(top) && precedence.count(input[i])) {
-            if (precedence.at(top) >= precedence.at(input[i])) {
-                // reduce
-                for (int j = 0; j < sizeof(productions) / sizeof(productions[0]); j++) {
-                    if (productions[j][3] == top) {
-                        int len = productions[j].size() - 3;
-                        while (len--) {
-                            stk.pop();
-                        }
-                        stk.push(productions[j][0]);
-                        break;
-                    }
-                }
-            } else {
-                // shift
-                stk.push(input[i]);
-                i++;
-            }
-        } else {
-            // invalid input
-            return false;
-        }
-    }
-
-    return stk.top() == '$' && i == input.size();
+void check()
+{
+	strcpy(ac,"REDUCE TO E -> ");
+	
+	for(z = 0; z < c; z++)
+	{
+		// checking for producing rule E->4
+		if(stk[z] == '4')
+		{
+			printf("%s4", ac);
+			stk[z] = 'E';
+			stk[z + 1] = '\0';
+			
+			//printing action
+			printf("\n$%s\t%s$\t", stk, a);
+		}
+	}
+		
+	for(z = 0; z < c - 2; z++)
+	{
+		// checking for E->2E2 production
+		if(stk[z] == '2' && stk[z + 1] == 'E' &&
+								stk[z + 2] == '2')
+		{
+			printf("%s2E2", ac);
+			stk[z] = 'E';
+			stk[z + 1] = '\0';
+			stk[z + 2] = '\0';
+			printf("\n$%s\t%s$\t", stk, a);
+			i = i - 2;
+		}
+		
+	}
+		
+	for(z = 0; z < c - 2; z++)
+	{
+		//checking for E->3E3
+		if(stk[z] == '3' && stk[z + 1] == 'E' &&
+								stk[z + 2] == '3')
+		{
+			printf("%s3E3", ac);
+			stk[z]='E';
+			stk[z + 1]='\0';
+			stk[z + 2]='\0';
+			printf("\n$%s\t%s$\t", stk, a);
+			i = i - 2;
+		}
+	}
+	return ; 
 }
 
-int main() {
-    string input;
-    cout << "Enter an arithmetic expression: ";
-    cin >> input;
-
-    if (parse(input)) {
-        cout << "Valid expression" << endl;
-    } else {
-        cout << "Invalid expression" << endl;
-    }
-
-    return 0;
+int main()
+{
+	printf("GRAMMAR is -\nE->2E2 \nE->3E3 \nE->4\n");	
+	
+	// a is input string
+	strcpy(a,"32423");
+	
+	
+	c=strlen(a);
+	strcpy(act,"SHIFT");
+	printf("\nstack \t input \t action");
+	printf("\n$\t%s$\t", a);
+	for(i = 0; j < c; i++, j++)
+	{
+		
+		printf("%s", act);
+		
+		stk[i] = a[j];	
+		stk[i + 1] = '\0';
+		a[j]=' ';
+		
+		printf("\n$%s\t%s$\t", stk, a);
+		
+		check();
+	}
+	
+	check();
+	
+	if(stk[0] == 'E' && stk[1] == '\0')
+		printf("Accept\n");
+	else 
+		printf("Reject\n");
 }
