@@ -1,6 +1,9 @@
 //
 //  main.cpp
-//  Simple Code Generator
+/*/  input;
+a=b+c
+c=a*c
+exit/*/
 //
 // 
 //
