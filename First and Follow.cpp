@@ -1,10 +1,13 @@
-//
-//  main.cpp
-//  First Follow
-//
-//  Created by Anshu Aaron Varma on 16/02/23.
-//
 
+//  First Follow
+/*input
+E->TR
+R->+TR
+R->ε
+T->FY
+F->(E)
+F->(i)
+*/
 // C program to calculate the First and
 // Follow sets of a given grammar
 #include<stdio.h>
